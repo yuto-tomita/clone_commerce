@@ -1,13 +1,31 @@
 version: "3.9"
 services:
+  db:
+    image: mysql
+    restart: always
+    platform: linux/x86_64
+    environment:
+      MYSQL_DATABASE: app-db
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_USER: devlopment
+      MYSQL_PASSWORD: pass
+      TZ: Asia/Tokyo
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./server/logs:/var/log/mysql
   app:
     build: .
     environment:
       - DEBUG=app:*
     tty: true
     ports:
-      - "3000:3000"
+      - "8080:8080"
     volumes:
       - type: bind
         source: ./server
         target: /app
+    command: yarn start:dev
+volumes:
+  db-store:

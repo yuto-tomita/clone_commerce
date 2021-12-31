@@ -10,5 +10,3 @@ COPY server/yarn.lock ./
 RUN yarn install
 
 COPY ./server .
-
-CMD ["yarn", "start:dev"]
