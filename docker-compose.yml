@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    environment:
+      - DEBUG=app:*
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: bind
+        source: ./server
+        target: /app
