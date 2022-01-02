@@ -1,15 +1,15 @@
 module.exports = {
   type: 'mysql',
   host: 'localhost',
-  // port: 3306,
+  port: 3306,
   username: 'root',
   password: 'pass',
   database: 'app-db',
   synchronize: true,
-  entities: ['dist/db/entity/{*.ts,.js}'],
-  migrations: ['dist/db/migration/{*.ts,.js}'],
+  // entities: [User],
+  migrations: ['./src/db/migration/*.ts'],
   cli: {
-    entitiesDir: 'dist/db/entity',
-    migrationDir: 'dist/db/migration'
+    entitiesDir: './src/db/entity',
+    migrationsDir: './src/db/migration'
   }
 }
