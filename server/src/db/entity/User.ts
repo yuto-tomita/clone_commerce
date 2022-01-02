@@ -8,8 +8,4 @@ export class User {
   name: string
   @Column()
   product_id: number
-  @Column('simple-array')
-  follow: string[]
-  @Column('simple-array')
-  follower: string[]
 }
