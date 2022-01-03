@@ -2,24 +2,19 @@ import { Module } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { User } from './db/entity/User'
+import { User } from './db/entity/user.entity'
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'e-commerce-db-1',
       port: 3306,
-      username: 'devlopment',
+      username: 'root',
       password: 'pass',
       database: 'app-db',
-      synchronize: true,
       entities: [User],
-      migrations: ['./src/db/migration/*.ts'],
-      cli: {
-        entitiesDir: './src/db/entity',
-        migrationsDir: './src/db/migration'
-      }
+      synchronize: true
     })
   ],
   controllers: [AppController],
