@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
-@Entity('user')
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -8,4 +8,6 @@ export class User {
   name: string
   @Column()
   product_id: number
+  @Column('timestamp')
+  created_at: Date
 }
