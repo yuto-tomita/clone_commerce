@@ -12,6 +12,11 @@ export class Product {
   id: number
   @Column()
   product_name: string
+  @Column({
+    type: 'text',
+    nullable: true
+  })
+  product_description: string
   @Column()
   like_count: number
   @Column('simple-array')
