@@ -2,7 +2,9 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToMany
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn
 } from 'typeorm'
 import { Product } from './product.entity'
 
@@ -14,8 +16,12 @@ export class User {
   email: string
   @Column('varchar')
   password: string
-  @Column('timestamp')
+  @Column({ nullable: true })
+  avatar_url: string
+  @CreateDateColumn()
   created_at: Date
+  @UpdateDateColumn()
+  updated_at: Date
 
   @OneToMany(() => Product, (product) => product.user)
   products: Product[]
