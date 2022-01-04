@@ -9,7 +9,7 @@ module.exports = {
   // entities: [User],
   migrations: ['./src/db/migration/*.ts'],
   cli: {
-    entitiesDir: './src/db/entity',
+    entitiesDir: './src/domain/entity',
     migrationsDir: './src/db/migration'
   }
 }
