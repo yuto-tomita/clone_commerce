@@ -6,10 +6,10 @@ module.exports = {
   password: 'pass',
   database: 'app-db',
   synchronize: true,
-  // entities: [User],
+  entities: ['./src/domain/entity/*.entity{.ts,.js}'],
   migrations: ['./src/db/migration/*.ts'],
-  seeds: ['src/db/seeder/*{.ts,.js}'],
-  factories: ['src/db/factory/*{.ts,.js}'],
+  seeds: ['./src/db/seeder/*.seed{.ts,.js}'],
+  factories: ['./src/db/factory/*.factory{.ts,.js}'],
   cli: {
     entitiesDir: './src/domain/entity',
     migrationsDir: './src/db/migration'
