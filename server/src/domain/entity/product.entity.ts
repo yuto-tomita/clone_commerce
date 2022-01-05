@@ -21,6 +21,8 @@ export class Product {
   like_count: number
   @Column('simple-array')
   tag: string[]
+  @Column('simple-array', { nullable: true })
+  product_images: string[]
 
   @ManyToOne(() => User, (user) => user.products)
   user: User
