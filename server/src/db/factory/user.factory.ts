@@ -13,6 +13,7 @@ define(User, (faker: typeof Faker): User => {
   user.email = faker.internet.email()
   user.password = hashPassword
   user.avatar_url = faker.internet.avatar()
+  user.name = faker.internet.userName()
 
   return user
 })

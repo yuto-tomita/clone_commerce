@@ -16,6 +16,8 @@ export class User {
   email: string
   @Column('varchar')
   password: string
+  @Column()
+  name: string
   @Column({ nullable: true })
   avatar_url: string
   @CreateDateColumn()
