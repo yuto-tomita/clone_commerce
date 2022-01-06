@@ -1,6 +1,7 @@
 import { Connection } from 'typeorm'
 import { Factory, Seeder } from 'typeorm-seeding'
-import { User, Product } from '../factory'
+import { User } from '../factory'
+import { Product } from 'src/domain/entity'
 import * as Faker from 'faker/locale/ja'
 
 export default class CreateUser implements Seeder {
