@@ -8,4 +8,8 @@ export class UserServise {
   constructor(
     @InjectRepository(User) private usersRepository: Repository<User>
   ) {}
+
+  create(user: User) {
+    this.usersRepository.create(user)
+  }
 }
