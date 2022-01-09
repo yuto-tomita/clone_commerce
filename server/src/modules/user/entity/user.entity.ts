@@ -20,6 +20,8 @@ export class User {
   name: string
   @Column({ nullable: true })
   avatar_url: string
+  @Column({ nullable: true, type: 'text' })
+  profile_text: string
   @CreateDateColumn()
   created_at: Date
   @UpdateDateColumn()
