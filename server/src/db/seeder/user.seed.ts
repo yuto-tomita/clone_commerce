@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm'
 import { Factory, Seeder } from 'typeorm-seeding'
-import { User } from '../factory'
+import User from '../factory/user.factory'
 import { Product } from 'src/domain/entity'
 import * as Faker from 'faker/locale/ja'
 
@@ -12,7 +12,9 @@ export default class CreateUser implements Seeder {
     await factory(User)().createMany(10)
 
     const userRepository = connection.getRepository(User)
-    const firstUser = userRepository.findOne('017e26d8-0ee9-4e71-97d6-0ac20da07e62')
+    const firstUser = userRepository.findOne(
+      '017e26d8-0ee9-4e71-97d6-0ac20da07e62'
+    )
 
     const productRepository = connection.getRepository(Product)
     const product = new Product()
