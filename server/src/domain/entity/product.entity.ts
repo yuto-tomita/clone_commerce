@@ -4,7 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne
 } from 'typeorm'
-import { User } from '@user/entity/user.entity'
+import { User } from '@/modules/users/entity/users.entity'
 
 @Entity('products')
 export class Product {

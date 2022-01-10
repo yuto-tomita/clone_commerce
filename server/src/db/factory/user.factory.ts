@@ -1,5 +1,5 @@
 import { define } from 'typeorm-seeding'
-import { User } from '@user/entity/user.entity'
+import { User } from '@/modules/users/entity/users.entity'
 import * as Faker from 'faker/locale/ja'
 import * as bcrypt from 'bcrypt'
 

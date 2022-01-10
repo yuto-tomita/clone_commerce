@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": ["src/*"],
-      "@user/*": ["src/modules/user/*"]
+      "@user/*": ["src/modules/users/*"]
     }
   }
 }
