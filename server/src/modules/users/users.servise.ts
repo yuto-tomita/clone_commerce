@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { User } from './entity/users.entity'
 
@@ -10,11 +9,7 @@ export class UsersServise {
     private usersRepository: Repository<User>
   ) {}
 
-  create(user: User) {
-    this.usersRepository.create(user)
-  }
-
-  getHello() {
-    return 'hello world!'
+  getAllUsers() {
+    return this.usersRepository.createQueryBuilder().getMany()
   }
 }
