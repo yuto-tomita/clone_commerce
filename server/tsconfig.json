@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": ["src/*"],
-      "@user/*": ["src/modules/users/*"]
+      "@user/*": ["src/modules/users/*"],
+      "@db/*": ["src/modules/db/*"]
     }
   }
 }
