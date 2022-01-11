@@ -19,6 +19,8 @@ export class Product {
   product_description: string
   @Column()
   like_count: number
+  @Column()
+  product_price: number
   @Column('simple-array')
   tag: string[]
   @Column('simple-array', { nullable: true })
