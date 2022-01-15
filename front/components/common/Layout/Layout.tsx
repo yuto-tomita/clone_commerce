@@ -1,11 +1,12 @@
 import { FC } from 'react'
-import { Header } from '@components/common'
+import { Header, Footer } from '@components/common'
 
 const Layout: FC = ({ children }) => {
   return (
     <>
       <Header />
       <main>{children}</main>
+      <Footer />
     </>
   )
 }
