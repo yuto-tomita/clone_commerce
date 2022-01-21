@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Input } from '@components/ui'
 import { SearchIcon } from '@heroicons/react/solid'
+import Link from 'next/link'
 
 const Header: FC = () => {
   const getNavigationMenuElement = (menuName: string) => {
@@ -25,7 +26,9 @@ const Header: FC = () => {
         <div className="flex items-center mr-4">
           {getNavigationMenuElement('マイページ')}
           {getNavigationMenuElement('ログイン')}
-          {getNavigationMenuElement('会員登録')}
+          <Link href="/signup">
+            {getNavigationMenuElement('会員登録')}
+          </Link>
           {getNavigationMenuElement('出品')}
         </div>
       </div>
