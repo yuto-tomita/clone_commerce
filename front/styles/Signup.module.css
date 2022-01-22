@@ -1,0 +1,3 @@
+.signupFormInputStyle {
+	@apply border-gray-300 w-full border-2 mb-5
+}
