@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react'
+import { ChangeEvent, FC, ReactNode, useState } from 'react'
 
 type InputType = 'text' | 'password'
 
@@ -8,6 +8,7 @@ interface Props {
   icon?: ReactNode
   className?: string
   inputType?: InputType
+  onChange?: (arg: string) => any
 }
 
 const Input: FC<Props> = ({
@@ -15,13 +16,20 @@ const Input: FC<Props> = ({
   bgColor = 'bg-gray-100',
   icon,
   className = '',
-  inputType = 'text'
+  inputType = 'text',
+  onChange
 }) => {
   const [passwordOrText, setPasswordOrText] =
-    useState<InputType>('password')
+    useState<InputType>(inputType)
 
   const switchEyeIcon = (inputType: InputType) => {
     setPasswordOrText(inputType)
+  }
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e.target.value)
+    }
   }
 
   return (
@@ -30,6 +38,7 @@ const Input: FC<Props> = ({
         type={passwordOrText}
         placeholder={placeholder}
         className={`${className} ${bgColor} text-xs focus:outline-none focus:border focus:border-blue-400 rounded-md border border-white px-7 py-3 relative`}
+        onChange={(e) => handleOnChange(e)}
       />
       <div className="absolute top-3 left-8">{icon}</div>
 
