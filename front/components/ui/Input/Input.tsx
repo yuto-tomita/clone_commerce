@@ -8,7 +8,8 @@ interface Props {
   icon?: ReactNode
   className?: string
   inputType?: InputType
-  onChange?: (arg: string) => any
+  onChange: (arg: string) => any
+  defaultValue?: string
 }
 
 const Input: FC<Props> = ({
@@ -17,7 +18,8 @@ const Input: FC<Props> = ({
   icon,
   className = '',
   inputType = 'text',
-  onChange
+  onChange,
+  defaultValue = ''
 }) => {
   const [passwordOrText, setPasswordOrText] =
     useState<InputType>(inputType)
@@ -26,19 +28,14 @@ const Input: FC<Props> = ({
     setPasswordOrText(inputType)
   }
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(e.target.value)
-    }
-  }
-
   return (
     <div className="relative">
       <input
         type={passwordOrText}
         placeholder={placeholder}
         className={`${className} ${bgColor} text-xs focus:outline-none focus:border focus:border-blue-400 rounded-md border border-white px-7 py-3 relative`}
-        onChange={(e) => handleOnChange(e)}
+        onChange={(e) => onChange(e.target.value)}
+        value={defaultValue}
       />
       <div className="absolute top-3 left-8">{icon}</div>
 
