@@ -6,7 +6,7 @@ import Link from 'next/link'
 const Header: FC = () => {
   const getNavigationMenuElement = (menuName: string) => {
     return (
-      <div className="mr-4 cursor-pointer p-1 hover:opacity-60 hover:bg-slate-200 hover:rounded-md">
+      <div className="mr-4 cursor-pointer p-1 hover:rounded-md hover:bg-slate-200 hover:opacity-60">
         {menuName}
       </div>
     )
@@ -23,7 +23,7 @@ const Header: FC = () => {
             icon={<SearchIcon className="h-4 text-slate-400" />}
           />
         </div>
-        <div className="flex items-center mr-4">
+        <div className="mr-4 flex items-center">
           {getNavigationMenuElement('マイページ')}
           {getNavigationMenuElement('ログイン')}
           <Link href="/signup">

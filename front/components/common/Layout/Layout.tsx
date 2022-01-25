@@ -3,7 +3,7 @@ import { Header, Footer } from '@components/common'
 
 const Layout: FC = ({ children }) => {
   return (
-    <body className="flex flex-col min-h-screen">
+    <body className="flex min-h-screen flex-col">
       <Header />
       <div className="m-10">{children}</div>
       <Footer />

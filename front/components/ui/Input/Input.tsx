@@ -33,7 +33,7 @@ const Input: FC<Props> = ({
       <input
         type={passwordOrText}
         placeholder={placeholder}
-        className={`${className} ${bgColor} text-xs focus:outline-none focus:border focus:border-blue-400 rounded-md border border-white px-7 py-3 relative`}
+        className={`${className} ${bgColor} relative rounded-md border border-white px-7 py-3 text-xs focus:border focus:border-blue-400 focus:outline-none`}
         onChange={(e) => onChange(e.target.value)}
         value={defaultValue}
       />
