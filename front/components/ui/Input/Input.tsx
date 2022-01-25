@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 
 type InputType = 'text' | 'password'
 
