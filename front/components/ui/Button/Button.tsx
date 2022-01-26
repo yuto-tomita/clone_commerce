@@ -6,12 +6,14 @@ interface Props {
   children?: ReactNode
   variant?: Variant
   className?: string
+  onClick?: () => any
 }
 
 const Button: FC<Props> = ({
   children,
   variant = 'secondary',
-  className = ''
+  className = '',
+  onClick
 }) => {
   const getBorderColor: { [P in Variant]: string } = {
     primary: 'border-primary',
@@ -26,9 +28,17 @@ const Button: FC<Props> = ({
     success: 'bg-success',
     danger: 'bg-danger'
   }
+
+  const handleOnClick = () => {
+    if (onClick) {
+      onClick()
+    }
+  }
+
   return (
     <button
-      className={`block ${className} border ${getBorderColor[variant]} p-2 rounded-md text-white ${getBgColor[variant]}`}
+      className={`block ${className} border ${getBorderColor[variant]} rounded-md p-2 text-white ${getBgColor[variant]}`}
+      onClick={handleOnClick}
     >
       {children}
     </button>
