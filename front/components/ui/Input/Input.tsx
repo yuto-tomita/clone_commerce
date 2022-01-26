@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useState, ChangeEvent } from 'react'
 
 type InputType = 'text' | 'password'
 
@@ -8,7 +8,7 @@ interface Props {
   icon?: ReactNode
   className?: string
   inputType?: InputType
-  onChange: (arg: string) => any
+  onChange?: (arg: string) => any
   defaultValue?: string
 }
 
@@ -28,13 +28,19 @@ const Input: FC<Props> = ({
     setPasswordOrText(inputType)
   }
 
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e.target.value)
+    }
+  }
+
   return (
     <div className="relative">
       <input
         type={passwordOrText}
         placeholder={placeholder}
         className={`${className} ${bgColor} relative rounded-md border border-white px-7 py-3 text-xs focus:border focus:border-blue-400 focus:outline-none`}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => handleOnChange(e)}
         value={defaultValue}
       />
       <div className="absolute top-3 left-8">{icon}</div>
