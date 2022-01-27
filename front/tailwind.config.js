@@ -1,7 +1,8 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
@@ -11,7 +12,7 @@ module.exports = {
         success: '#4ae324',
         danger: '#e84343'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 }

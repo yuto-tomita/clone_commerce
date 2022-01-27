@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   env: {
     browser: true,
@@ -20,19 +21,19 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: { jsx: true },
     ecmaVersion: 2021,
-    sourceType: 'module',
-    project: './tsconfig.json'
+    sourceType: 'module'
+    // project: './tsconfig.json'
   },
   plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
     'prettier/prettier': [
-      "error", 
+      'error',
       {
         printWidth: 70,
         tabWidth: 2,
         singleQuote: true,
         trailingComma: 'none',
-        semi: false,
+        semi: false
       }
     ],
     quotes: ['error', 'single'],
@@ -51,8 +52,6 @@ module.exports = {
       }
     ],
     'react/jsx-closing-bracket-location': 1,
-    'react/jsx-closing-bracket-location': [1, 'tag-aligned'],
-    'react/jsx-closing-bracket-location': [1, 'line-aligned'],
     'react/jsx-curly-newline': [
       'error',
       { multiline: 'consistent', singleline: 'consistent' }
