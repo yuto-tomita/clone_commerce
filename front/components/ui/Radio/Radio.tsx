@@ -6,14 +6,14 @@ interface RadioButtonData {
 }
 
 interface Props {
-  radioButtonData: RadioButtonData[]
+  options: RadioButtonData[]
   className?: string
-  onChange: (arg: null | number) => any
+  onChange: (arg: null | number) => void
   defaultValue?: number | null
 }
 
 const Radio: FC<Props> = ({
-  radioButtonData,
+  options,
   className = '',
   onChange,
   defaultValue = null
@@ -24,14 +24,14 @@ const Radio: FC<Props> = ({
 
   return (
     <div className={`${className}`}>
-      {radioButtonData.map((val) => {
+      {options.map((val) => {
         return (
           <div key={val.value} className="pr-4">
             <input
               type="radio"
               value={val.value}
               id={val.text}
-              name={`${radioButtonData.length}-${radioButtonData[0].text}-${radioButtonData[1]}.id`}
+              name={`${options.length}-${options[0].text}-${options[1].value}`}
               onChange={(e) => handleOnChange(e)}
               checked={defaultValue === val.value}
             />
