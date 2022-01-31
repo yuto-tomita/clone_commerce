@@ -12,8 +12,18 @@ export const useValidation = () => {
     return regex.test(value)
   }
 
+  const isPass = (value: string) => {
+    const regex = new RegExp(
+      /^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}$/i,
+      'g'
+    )
+
+    return regex.test(value)
+  }
+
   return {
     required,
-    isMail
+    isMail,
+    isPass
   }
 }

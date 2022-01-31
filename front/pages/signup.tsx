@@ -22,20 +22,56 @@ export default function Signup() {
     userName: '',
     gender: ''
   })
-  const { required, isMail } = useValidation()
+  const { required, isMail, isPass } = useValidation()
 
   const submitToServer = () => {
     initialErrorState()
 
+    signUpValidate()
+  }
+
+  const signUpValidate = () => {
     if (!required(mail)) {
       setError({ ...error, mail: 'メールアドレスを入力してください' })
     } else {
       if (!isMail(mail)) {
         // errorStateに複数の状態を保持するために関数型でStateに値を保存する
-        setError((error) => {
+        setError((prevState) => {
           return {
-            ...error,
+            ...prevState,
             mail: 'メールアドレスの形式で入力してください'
+          }
+        })
+      } else {
+        setError((prevState) => {
+          return {
+            ...prevState,
+            mail: ''
+          }
+        })
+      }
+    }
+
+    if (!required(password)) {
+      setError((prevState) => {
+        return {
+          ...prevState,
+          password: 'パスワードを入力してください'
+        }
+      })
+    } else {
+      if (!isPass(password)) {
+        setError((prevState) => {
+          return {
+            ...prevState,
+            password: '半角英数字8文字以上で入力してください'
+          }
+        })
+      } else {
+        setError((prevState) => {
+          return {
+            ...prevState,
+            password: ''
           }
         })
       }
