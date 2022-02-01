@@ -76,6 +76,22 @@ export default function Signup() {
         })
       }
     }
+
+    if (!required(userName)) {
+      setError((prevState) => {
+        return {
+          ...prevState,
+          userName: 'ユーザー名を入力してください'
+        }
+      })
+    } else {
+      setError((prevState) => {
+        return {
+          ...prevState,
+          userName: ''
+        }
+      })
+    }
   }
 
   const initialErrorState = () => {
@@ -104,9 +120,10 @@ export default function Signup() {
         <Input
           placeholder="メールアドレスを入力してください"
           bgColor="bg-white"
-          className={style.signupFormInputStyle}
+          className="mb-5"
           onChange={setMail}
           defaultValue={mail}
+          error={error['mail']}
         />
 
         <label>パスワード</label>
@@ -114,18 +131,20 @@ export default function Signup() {
           placeholder=""
           bgColor="bg-white"
           inputType="password"
-          className={style.signupFormInputStyle}
+          className="mb-5"
           onChange={setPassword}
           defaultValue={password}
+          error={error['password']}
         />
 
         <label>ユーザー名</label>
         <Input
           placeholder="このサイトで使用するユーザー名を使用してください"
           bgColor="bg-white"
-          className={style.signupFormInputStyle}
+          className="mb-5"
           onChange={setUserName}
           defaultValue={userName}
+          error={error['userName']}
         />
 
         <label>性別</label>
