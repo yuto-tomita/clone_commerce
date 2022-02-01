@@ -13,3 +13,7 @@
 .sectionHeading {
   @apply pt-1 pb-2 text-2xl font-bold tracking-wide mb-2;
 }
+
+.errorFont {
+  @apply text-xs text-rose-600 block
+}

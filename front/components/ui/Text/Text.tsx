@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import style from './Text.module.css'
 
-type Variant = 'heading' | 'sectionHeading'
+type Variant = 'heading' | 'sectionHeading' | 'error'
 
 interface Props {
   variant?: Variant
@@ -20,7 +20,8 @@ const Text: FC<Props> = ({
     [P in Variant]: string
   } = {
     heading: style.heading,
-    sectionHeading: style.sectionHeading
+    sectionHeading: style.sectionHeading,
+    error: style.errorFont
   }
 
   return (
