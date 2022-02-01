@@ -1,4 +1,5 @@
 import { FC, ReactNode, useState, ChangeEvent } from 'react'
+import { Text } from '@components/ui'
 
 type InputType = 'text' | 'password'
 
@@ -10,6 +11,7 @@ interface Props {
   inputType?: InputType
   onChange?: (arg: string) => any
   defaultValue?: string
+  error?: string
 }
 
 const Input: FC<Props> = ({
@@ -19,7 +21,8 @@ const Input: FC<Props> = ({
   className = '',
   inputType = 'text',
   onChange,
-  defaultValue = ''
+  defaultValue = '',
+  error = ''
 }) => {
   const [passwordOrText, setPasswordOrText] =
     useState<InputType>(inputType)
@@ -34,15 +37,30 @@ const Input: FC<Props> = ({
     }
   }
 
+  const getErrorClasses = () => {
+    if (error?.length) {
+      return 'border-2 border-rose-600'
+    } else {
+      return 'border border-gray-300'
+    }
+  }
+
   return (
     <div className="relative">
       <input
         type={passwordOrText}
         placeholder={placeholder}
-        className={`${className} ${bgColor} relative rounded-md border border-white px-7 py-3 text-xs focus:border focus:border-blue-400 focus:outline-none`}
+        className={`${className} ${bgColor} relative w-full rounded-md px-7 py-3 text-xs focus:border focus:border-blue-400 focus:outline-none ${getErrorClasses()}`}
         onChange={(e) => handleOnChange(e)}
         value={defaultValue}
       />
+
+      {error?.length ? (
+        <Text className="-mt-3" variant={'error'}>
+          {error}
+        </Text>
+      ) : null}
+
       <div className="absolute top-3 left-8">{icon}</div>
 
       {inputType === 'password' ? (
