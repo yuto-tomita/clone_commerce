@@ -19,7 +19,7 @@ const Header: FC = () => {
           <Input
             placeholder="検索したいワードを入力してください"
             bgColor="bg-gray-100"
-            className="ml-6 w-96"
+            className="ml-6 w-80"
             icon={<SearchIcon className="h-4 text-slate-400" />}
           />
         </div>
