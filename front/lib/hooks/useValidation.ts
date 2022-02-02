@@ -21,9 +21,15 @@ export const useValidation = () => {
     return regex.test(value)
   }
 
+  // jsの仕様で0はfalseを返却する
+  const isSelect = (value: number | null) => {
+    return !!value
+  }
+
   return {
     required,
     isMail,
-    isPass
+    isPass,
+    isSelect
   }
 }

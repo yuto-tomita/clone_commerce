@@ -1,5 +1,4 @@
 import { Text, Input, Radio, Button } from '@components/ui'
-import style from '@styles/Signup.module.css'
 import { RADIO_OPTION } from 'lib/constant/SignupPageConstant'
 import { useState } from 'react'
 import { useValidation } from 'lib/hooks/useValidation'
@@ -22,7 +21,7 @@ export default function Signup() {
     userName: '',
     gender: ''
   })
-  const { required, isMail, isPass } = useValidation()
+  const { required, isMail, isPass, isSelect } = useValidation()
 
   const submitToServer = () => {
     initialErrorState()
@@ -30,9 +29,26 @@ export default function Signup() {
     signUpValidate()
   }
 
+  const initialErrorState = () => {
+    setError((prevState) => {
+      return {
+        ...prevState,
+        mail: '',
+        password: '',
+        userName: '',
+        gender: ''
+      }
+    })
+  }
+
   const signUpValidate = () => {
     if (!required(mail)) {
-      setError({ ...error, mail: 'メールアドレスを入力してください' })
+      setError((prevState) => {
+        return {
+          ...prevState,
+          mail: 'メールアドレスを入力してください'
+        }
+      })
     } else {
       if (!isMail(mail)) {
         // errorStateに複数の状態を保持するために関数型でStateに値を保存する
@@ -92,18 +108,22 @@ export default function Signup() {
         }
       })
     }
-  }
 
-  const initialErrorState = () => {
-    setError((prevState) => {
-      return {
-        ...prevState,
-        mail: '',
-        password: '',
-        userName: '',
-        gender: ''
-      }
-    })
+    if (!isSelect(gender)) {
+      setError((prevState) => {
+        return {
+          ...prevState,
+          gender: '性別を選択してください'
+        }
+      })
+    } else {
+      setError((prevState) => {
+        return {
+          ...prevState,
+          gender: ''
+        }
+      })
+    }
   }
 
   return (
