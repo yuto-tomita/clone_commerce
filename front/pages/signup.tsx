@@ -127,10 +127,7 @@ export default function Signup() {
   }
 
   return (
-    <div>
-      {Object.values(error).map((val, key) => (
-        <li key={key}>{val}</li>
-      ))}
+    <>
       <Text className="text-center" variant="sectionHeading">
         会員登録
       </Text>
@@ -173,6 +170,7 @@ export default function Signup() {
           options={RADIO_OPTION}
           onChange={setGender}
           defaultValue={gender}
+          error={error['gender']}
         />
 
         <Button
@@ -183,6 +181,6 @@ export default function Signup() {
           送信
         </Button>
       </div>
-    </div>
+    </>
   )
 }
