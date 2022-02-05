@@ -1,19 +1,30 @@
-import { createAsyncThunk } from '@reduxjs/toolkit/src/createAsyncThunk'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { createSlice } from '@reduxjs/toolkit'
 
-type LoadingStatus = 'success' | 'failed' | 'pending'
+type LoadingStatus = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 interface State {
   status: LoadingStatus
 }
 
-export const addNewUser = createAsyncThunk(
+interface UserParams {
+  mail: string
+}
+
+interface UserParams {
+  mail: string
+  password: string
+  userName: string
+  gender: string
+}
+
+export const addUser = createAsyncThunk(
   'user-management/users',
-  async (params) => {
+  async (params: UserParams) => {
     try {
       const response = await axios.post(
-        `${process.env.BASE_URL}/user-management/users`
+        `${process.env.BASE_URL}/user-management/users`,
+        params
       )
       return response.data
     } catch (e) {
@@ -29,7 +40,7 @@ export const addNewUser = createAsyncThunk(
 )
 
 const initialState: State = {
-  status: 'pending'
+  status: 'idle'
 }
 
 const usersSlice = createSlice({
@@ -38,13 +49,13 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(addNewUser.pending, (state, action) => {
-        state.status = 'pending'
+      .addCase(addUser.pending, (state, action) => {
+        state.status = 'loading'
       })
-      .addCase(addNewUser.fulfilled, (state, action) => {
-        state.status = 'success'
+      .addCase(addUser.fulfilled, (state, action) => {
+        state.status = 'succeeded'
       })
-      .addCase(addNewUser.rejected, (state, action) => {
+      .addCase(addUser.rejected, (state, action) => {
         state.status = 'failed'
       })
   }
