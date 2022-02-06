@@ -15,7 +15,7 @@ interface UserParams {
   mail: string
   password: string
   userName: string
-  gender: string
+  gender: number
 }
 
 export const addUser = createAsyncThunk(
