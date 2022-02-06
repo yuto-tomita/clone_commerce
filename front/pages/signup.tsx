@@ -2,6 +2,9 @@ import { Text, Input, Radio, Button } from '@components/ui'
 import { RADIO_OPTION } from 'lib/constant/SignupPageConstant'
 import { useState } from 'react'
 import { useValidation } from 'lib/hooks/useValidation'
+import { useDispatch, useSelector } from 'react-redux'
+import { addUser } from '../store/features/users/usersSlice'
+import type { RootState } from '../store/store'
 
 interface ValidationError {
   mail: string
@@ -22,11 +25,28 @@ export default function Signup() {
     gender: ''
   })
   const { required, isMail, isPass, isSelect } = useValidation()
+  const dispatch = useDispatch()
+  const promiseStatus = useSelector(
+    (state: RootState) => state.status
+  )
 
   const submitToServer = () => {
     initialErrorState()
 
     signUpValidate()
+    if (
+      Object.values(error).some((val) => val.length) &&
+      typeof gender === 'number'
+    ) {
+      dispatch(
+        addUser({
+          mail,
+          password,
+          userName,
+          gender
+        })
+      )
+    }
   }
 
   const initialErrorState = () => {
