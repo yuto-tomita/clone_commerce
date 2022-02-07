@@ -18,6 +18,8 @@ export class User {
   password: string
   @Column()
   name: string
+  @Column()
+  gender: number
   @Column({ nullable: true })
   avatar_url: string
   @Column({ nullable: true, type: 'text' })
