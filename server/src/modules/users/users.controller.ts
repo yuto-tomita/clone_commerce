@@ -13,7 +13,7 @@ export class UsersController {
     return JSON.stringify(allUsersData)
   }
 
-  @Post('create-user')
+  @Post()
   async createUser(@Param() param: CreateUserDto) {
     console.log(param)
   }
