@@ -5,21 +5,21 @@ import { useValidation } from 'lib/hooks/useValidation'
 import { useAddUserMutation } from '../store/features/users/usersSlice'
 
 interface ValidationError {
-  mail: string
+  email: string
   password: string
-  userName: string
+  name: string
   gender: string
 }
 
 export default function Signup() {
-  const [mail, setMail] = useState('')
+  const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
-  const [userName, setUserName] = useState('')
+  const [name, setUserName] = useState('')
   const [gender, setGender] = useState<null | number>(null)
   const [error, setError] = useState<ValidationError>({
-    mail: '',
+    email: '',
     password: '',
-    userName: '',
+    name: '',
     gender: ''
   })
   const { required, isMail, isPass, isSelect } = useValidation()
@@ -33,13 +33,13 @@ export default function Signup() {
       typeof gender === 'number'
     ) {
       addUser({
-        mail,
+        email,
         password,
-        userName,
+        name,
         gender
       })
         .unwrap()
-        .catch((error) => alert('エラーが発生しました'))
+        .catch((error) => console.log(error))
     }
   }, [error])
 
@@ -53,36 +53,36 @@ export default function Signup() {
     setError((prevState) => {
       return {
         ...prevState,
-        mail: '',
+        email: '',
         password: '',
-        userName: '',
+        name: '',
         gender: ''
       }
     })
   }
 
   const signUpValidate = () => {
-    if (!required(mail)) {
+    if (!required(email)) {
       setError((prevState) => {
         return {
           ...prevState,
-          mail: 'メールアドレスを入力してください'
+          email: 'メールアドレスを入力してください'
         }
       })
     } else {
-      if (!isMail(mail)) {
+      if (!isMail(email)) {
         // errorStateに複数の状態を保持するために関数型でStateに値を保存する
         setError((prevState) => {
           return {
             ...prevState,
-            mail: 'メールアドレスの形式で入力してください'
+            email: 'メールアドレスの形式で入力してください'
           }
         })
       } else {
         setError((prevState) => {
           return {
             ...prevState,
-            mail: ''
+            email: ''
           }
         })
       }
@@ -113,18 +113,18 @@ export default function Signup() {
       }
     }
 
-    if (!required(userName)) {
+    if (!required(name)) {
       setError((prevState) => {
         return {
           ...prevState,
-          userName: 'ユーザー名を入力してください'
+          name: 'ユーザー名を入力してください'
         }
       })
     } else {
       setError((prevState) => {
         return {
           ...prevState,
-          userName: ''
+          name: ''
         }
       })
     }
@@ -159,8 +159,8 @@ export default function Signup() {
           bgColor="bg-white"
           className="mb-5"
           onChange={setMail}
-          defaultValue={mail}
-          error={error['mail']}
+          defaultValue={email}
+          error={error['email']}
         />
 
         <label>パスワード</label>
@@ -180,8 +180,8 @@ export default function Signup() {
           bgColor="bg-white"
           className="mb-5"
           onChange={setUserName}
-          defaultValue={userName}
-          error={error['userName']}
+          defaultValue={name}
+          error={error['name']}
         />
 
         <label>性別</label>

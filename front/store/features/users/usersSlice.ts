@@ -10,9 +10,9 @@ interface State {
 }
 
 interface UserParams {
-  mail: string
+  email: string
   password: string
-  userName: string
+  name: string
   gender: number
 }
 
