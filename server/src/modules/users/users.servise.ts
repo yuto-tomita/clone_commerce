@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common'
 import { Repository } from 'typeorm'
-import { User } from './entity/users.entity'
+import { User } from './interface/user.interface'
 
 @Injectable()
 export class UsersServise {
@@ -11,5 +11,16 @@ export class UsersServise {
 
   getAllUsers() {
     return this.usersRepository.createQueryBuilder().getMany()
+  }
+
+  async create(user: User) {
+    const userData = this.usersRepository.create({ ...user })
+    try {
+      await this.usersRepository.save(userData)
+    } catch (e) {
+      console.log(e)
+    }
+
+    return
   }
 }
