@@ -8,7 +8,7 @@ interface RadioButtonData {
 interface Props {
   options: RadioButtonData[]
   className?: string
-  onChange: (arg: null | number) => void
+  onChange: (arg: any) => void
   defaultValue?: number | null
   error?: string
 }

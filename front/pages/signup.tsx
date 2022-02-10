@@ -1,5 +1,8 @@
 import { Text, Input, Radio, Button } from '@components/ui'
-import { RADIO_OPTION } from 'lib/constant/SignupPageConstant'
+import {
+  RADIO_OPTION,
+  RADIO_VALUES_ENUM
+} from 'lib/constant/SignupPageConstant'
 import { useState, useEffect } from 'react'
 import { useValidation } from 'lib/hooks/useValidation'
 import { useAddUserMutation } from '../store/features/users/usersSlice'
@@ -15,7 +18,7 @@ export default function Signup() {
   const [email, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setUserName] = useState('')
-  const [gender, setGender] = useState<null | number>(null)
+  const [gender, setGender] = useState<null | RADIO_VALUES_ENUM>(null)
   const [error, setError] = useState<ValidationError>({
     email: '',
     password: '',
@@ -26,8 +29,6 @@ export default function Signup() {
   const [addUser] = useAddUserMutation()
 
   useEffect(() => {
-    console.log(Object.values(error).some((val) => val.length))
-    console.log(Object.values(error))
     if (
       !Object.values(error).some((val) => val.length) &&
       typeof gender === 'number'
