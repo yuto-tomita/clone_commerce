@@ -2,6 +2,7 @@ import {
   createApi,
   fetchBaseQuery
 } from '@reduxjs/toolkit/dist/query/react'
+import { RADIO_VALUES_ENUM } from 'lib/constant/SignupPageConstant'
 
 type LoadingStatus = 'idle' | 'loading' | 'succeeded' | 'failed'
 
@@ -13,7 +14,7 @@ interface UserParams {
   email: string
   password: string
   name: string
-  gender: number
+  gender: RADIO_VALUES_ENUM
 }
 
 const initialState: State = {
