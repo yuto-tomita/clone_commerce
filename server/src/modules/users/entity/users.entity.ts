@@ -8,6 +8,12 @@ import {
 } from 'typeorm'
 import { Product } from '@/domain/entity'
 
+export enum GenderEnum {
+  MALE = 1,
+  FEMALE = 2,
+  NO_ANSWER = 3
+}
+
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -18,8 +24,11 @@ export class User {
   password: string
   @Column()
   name: string
-  @Column()
-  gender: number
+  @Column({
+    type: 'enum',
+    enum: GenderEnum
+  })
+  gender: GenderEnum
   @Column({ nullable: true })
   avatar_url: string
   @Column({ nullable: true, type: 'text' })
