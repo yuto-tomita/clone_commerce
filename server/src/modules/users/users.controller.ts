@@ -1,14 +1,14 @@
 import { Controller, Get, Post, Body } from '@nestjs/common'
-import { UsersServise } from './users.servise'
+import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/users.dto'
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersServise: UsersServise) {}
+  constructor(private usersService: UsersService) {}
 
   @Get()
   async getAllUsers() {
-    const allUsersData = await this.usersServise.getAllUsers()
+    const allUsersData = await this.usersService.getAllUsers()
 
     return JSON.stringify(allUsersData)
   }
@@ -16,7 +16,9 @@ export class UsersController {
   @Post()
   async createUser(@Body() param: CreateUserDto) {
     console.log(param)
-    await this.usersServise.create(param)
+    // TODO: バリデーションチェックを書く
+    // TODO: エラーの詳細を返す
+    await this.usersService.create(param)
     return 'success to create!'
   }
 }
