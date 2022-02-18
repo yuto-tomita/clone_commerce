@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common'
+import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/users.dto'
 
@@ -14,8 +14,8 @@ export class UsersController {
   }
 
   @Post()
+  @HttpCode(201)
   async createUser(@Body() param: CreateUserDto) {
-    console.log(param)
     // TODO: バリデーションチェックを書く
     // TODO: エラーの詳細を返す
     await this.usersService.create(param)
