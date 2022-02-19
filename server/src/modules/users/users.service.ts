@@ -16,11 +16,9 @@ export class UsersService {
   async create(user: User) {
     const userData = this.usersRepository.create({ ...user })
     try {
-      await this.usersRepository.save(userData)
+      return await this.usersRepository.save(userData)
     } catch (e) {
-      console.log(e)
+      return e
     }
-
-    return
   }
 }
