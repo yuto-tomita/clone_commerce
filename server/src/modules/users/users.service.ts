@@ -9,7 +9,7 @@ export class UsersService {
     private usersRepository: Repository<User>
   ) {}
 
-  getAllUsers() {
+  allUsers() {
     return this.usersRepository.createQueryBuilder().getMany()
   }
 

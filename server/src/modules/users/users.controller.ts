@@ -8,7 +8,7 @@ export class UsersController {
 
   @Get()
   async getAllUsers() {
-    const allUsersData = await this.usersService.getAllUsers()
+    const allUsersData = await this.usersService.allUsers()
 
     return JSON.stringify(allUsersData)
   }
@@ -18,7 +18,6 @@ export class UsersController {
   async createUser(@Body() param: CreateUserDto) {
     // TODO: バリデーションチェックを書く
     // TODO: エラーの詳細を返す
-    await this.usersService.create(param)
-    return 'success to create!'
+    return await this.usersService.create(param)
   }
 }
